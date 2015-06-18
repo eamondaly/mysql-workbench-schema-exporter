@@ -72,7 +72,7 @@ class Table extends BaseTable
         $namespace = $this->getNamespace(null, false);
         $values = array(
             'type' => 'entity',
-            'table' => $this->getRawTableName(), 
+            'table' => ($this->getConfig()->get(Formatter::CFG_EXTEND_TABLENAME_WITH_SCHEMA) ? $this->getSchema()->getName().'.' : '').$this->getRawTableName(), 
         );
         if ($this->getConfig()->get(Formatter::CFG_AUTOMATIC_REPOSITORY)) {
             if ($repositoryNamespace = $this->getConfig()->get(Formatter::CFG_REPOSITORY_NAMESPACE)) {
