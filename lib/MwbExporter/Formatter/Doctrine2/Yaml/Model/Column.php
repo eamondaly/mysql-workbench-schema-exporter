@@ -53,6 +53,9 @@ class Column extends BaseColumn
         if ($this->isAutoIncrement()) {
             $values['generator'] = array('strategy' => strtoupper($this->getConfig()->get(Formatter::CFG_GENERATED_VALUE_STRATEGY)));
         }
+        if ($default = $this->getDefaultValue()) {
+            $values['default'] = $default;
+        }
 
         return $values;
     }
